@@ -1,3 +1,5 @@
+#include "utils.h"
+
 void string_copy(char** dst, size_t* dst_bytes, const char* src, int src_bytes) {
     if ( src_bytes == 0 ) src_bytes = strlen(src);
     
