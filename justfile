@@ -5,7 +5,7 @@ exe := "retained_gui.exe"
 debug_exe := "retained_gui_debug.exe"
 
 debug:
-    time g++ main.cpp -Wall -Wextra -Werror -ggdb -o {{exe}} -fsanitize=address	
+    time g++ main.cpp -Wall -Wextra -Werror -ggdb -o {{exe}} -fsanitize=address,undefined,leak
     # just move_exe
 
 debug_run:
