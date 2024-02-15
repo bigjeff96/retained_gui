@@ -12,6 +12,7 @@
 
 
 int main() {
-    printf("Hello, World!\n");
+    Rectangle a = rectangle_make(0, 0, 0, 0);
+    printf("Hello, world! and %d\n", a.l);
     return 0;
 }

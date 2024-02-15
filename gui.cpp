@@ -1,3 +1,5 @@
+#include "gui.h"
+
 Rectangle rectangle_make(int l, int r, int t, int b) {
     Rectangle rect;
     rect.l = l;

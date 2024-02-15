@@ -1,3 +1,4 @@
+#pragma once
 struct Rectangle {
     int l, r, t, b;
 };
