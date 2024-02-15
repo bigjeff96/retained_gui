@@ -5,12 +5,12 @@ exe := "retained_gui.exe"
 debug_exe := "retained_gui_debug.exe"
 
 debug:
-    g++ *.cpp -Wall -Wextra -Werror -ggdb -o {{exe}} -fsanitize=address	
-    just move_exe
+    time g++ main.cpp -Wall -Wextra -Werror -ggdb -o {{exe}} -fsanitize=address	
+    # just move_exe
 
 debug_run:
 	just debug
-	./{{debug_exe}}
+	./{{exe}}
 	
 #ignore
 debug_watch:
@@ -21,7 +21,7 @@ debug_watch:
     just move_exe
 
 release:
-    g++ *.cpp -Wall -Wextra -Werror -O3 -o {{exe}}
+    g++ main.cpp -Wall -Wextra -Werror -O3 -o {{exe}}
 	
 #Line count of project
 loc:
