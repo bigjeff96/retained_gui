@@ -3,14 +3,20 @@ set shell := ["bash", "-uc"]
 find := if os() == "windows" {"/cygdrive/c/cygwin64/bin/find.exe"} else {"find"}
 exe := "retained_gui.exe"
 debug_exe := "retained_gui_debug.exe"
+gf2 := "/home/joe/.local/bin/gf2"
 
 debug:
-    time g++ main.cpp -Wall -Wextra -Werror -ggdb -o {{exe}} -fsanitize=address,undefined,leak
+    just fmt
+    time g++ main.cpp -Wall -Wextra -Werror -pedantic -ggdb -o {{exe}} -lX11 -fsanitize=address,undefined,leak
     # just move_exe
 
 debug_run:
 	just debug
 	./{{exe}}
+
+gf:
+	just debug
+	{{gf2}} {{exe}}
 	
 #ignore
 debug_watch:
@@ -30,11 +36,8 @@ install:
     just release
     mv {{exe}} /cygdrive/c/Projects/bin/{{exe}}
 
-# fmt:
-#     #!/bin/sh
-#     for i in $({{ find }} . -name "*.odin" -type f); do
-#         {{odinfmt}} -w "$i"
-#     done             
+fmt:
+	clang-format -i *.cpp *.h
 
 move_exe:
     #!/bin/sh
